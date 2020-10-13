@@ -1,0 +1,8 @@
+[flake8]
+max-line-length=88
+
+per-file-ignores=
+    dbconfig.py:E501
+
+exclude=
+    migrations/*
