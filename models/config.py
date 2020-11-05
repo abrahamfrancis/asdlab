@@ -1,1 +1,1 @@
-SQLALCHEMY_DB_URI = "postgres://developer:password@localhost:5432/player_auction"
+SQLALCHEMY_DB_URI = "postgres://puter:agetnscarn@localhost:5432/player_auction"
