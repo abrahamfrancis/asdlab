@@ -1,4 +1,5 @@
 import React,{useState, useEffect} from 'react';
+import "../css/admin.css";
 
 const Admin = (props) => {
     const [playerList, setPlayerList] = useState(null);
@@ -29,14 +30,8 @@ const Admin = (props) => {
     const removePlayerHandler = async(e) => {
         e.preventDefault();
         console.log(removePlayer);
-
-        const playerRemoveObject = {
-            "id": parseInt(removePlayer),
-        }
-
-        const result = await fetch("http://localhost:3000/player", {method:'DELETE',headers: { 'Content-Type': 'application/json' }, body:JSON.stringify(playerRemoveObject) }); 
-        // const resultJson = await result.json();
-        // console.log(resultJson);
+        const result = await fetch(`http://0.0.0.0:3000/player?id=eq.${removePlayer}`, {method:'DELETE'}); 
+        console.log(result);
         getPlayers();
     }
 
@@ -75,8 +70,7 @@ const Admin = (props) => {
 
     if(playerList !== null){
         return(
-            <div>
-
+            <div className="admin-panel">
                 <div className="playerAddForm">
                     <h2>Add Players</h2>
 
