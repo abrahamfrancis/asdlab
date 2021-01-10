@@ -55,7 +55,7 @@ const Admin = (props) => {
             "start_price": parseInt(addPlayer.start_price),
             "auctioned": auctionedValue,
             "contract_period": parseInt(addPlayer.contract_period),
-            "team_id": null
+            "team_id": parseInt(addPlayer.team_id)
         }
         console.log(player)
         const result = await fetch("http://localhost:3000/player", {method:'POST',headers: { 'Content-Type': 'application/json' }, body:JSON.stringify(player) }); 
@@ -152,9 +152,8 @@ const Admin = (props) => {
                                     <td>null</td>
                                 </tr>
                             ))}
-                        </tbody>
-                                
-                                </table>
+                        </tbody>            
+                    </table>
                 </div>
             </div>
         )
