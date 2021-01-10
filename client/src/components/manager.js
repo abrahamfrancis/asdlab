@@ -1,10 +1,10 @@
 import React,{useState, useEffect}  from 'react';
 
 const Manager = (props) => {
-    const [playerList, setPlayerList] = useState(null);
-    const [bidList, setBidList] = useState(null);
-    const [bidAmount, setBidAmount] = useState([]);
-    const [playerID, setPlayerID] = useState(null);
+    const [playerList, setPlayerList] = useState([]);
+    const [bidList, setBidList] = useState([]);
+    const [bidAmount, setBidAmount] = useState(0);
+    const [playerID, setPlayerID] = useState(0);
 
     const getPlayers = async ()=>{
         const players = await fetch('http://localhost:3000/player');
@@ -52,10 +52,22 @@ const Manager = (props) => {
         sendBid()
     }
 
+    const getTime = () => {
+        let date = new Date();              //Create a date object
+        let month = date.getMonth()+1;      //Get the month of the date object
+        let s_time = String(date);          //Convert the obj to string
+        let u_time = s_time.split(" ");     //Split the reseulting string
+
+        let curr_time = `${u_time[3]}-${month}-${u_time[2]}  ${u_time[4]}`
+        return curr_time;
+    }
+
     const sendBid = async() => {
+        let time = getTime()
+
         const bidDetails={
             "amount":bidAmount,
-            "when":'2021-01-10 02:38:29',
+            "when":time,
             "player_id": playerID,
             "team_id": 1
         }
@@ -70,7 +82,7 @@ const Manager = (props) => {
                 <h2>Manager Dashboard</h2>
             </div>
         
-            { (playerList !== null)&&(
+            { (playerList.length !== 0)&&(
                 <div className="playerDetails">
                     <h2>Place a bid</h2>
                     <form onSubmit={verifyHandler}>
@@ -85,7 +97,7 @@ const Manager = (props) => {
 
                     <h2>Current Bids</h2>
                     
-                    {(bidList === null)?(<div>No bids to display</div>):(
+                    {(bidList.length === 0)?(<div>No bids to display</div>):(
                         <div>
                             <table className="bidTable">
                                 <thead>
