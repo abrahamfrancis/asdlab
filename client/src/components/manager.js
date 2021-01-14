@@ -1,4 +1,6 @@
 import React,{useState, useEffect}  from 'react';
+import './manager.css';
+
 
 const Manager = (props) => {
     const [playerList, setPlayerList] = useState([]);
@@ -77,97 +79,115 @@ const Manager = (props) => {
     }
 
     return(
-        <div>
+        <div className="manager-screen">
             <div>
-                <h2>Manager Dashboard</h2>
+                <h1>Manager Dashboard</h1>
             </div>
         
             { (playerList.length !== 0)&&(
-                <div className="playerDetails">
-                    <h2>Place a bid</h2>
-                    <form onSubmit={verifyHandler}>
-                        <label>Player ID</label>
-                        <input type="number" value={playerID} onChange={handleChangeID} name="playerID"></input>
+                <div>
+                    <div className="player-details">
+                        <h2>Place a bid</h2>
+                        <form onSubmit={verifyHandler}>
+                            <div className="bid-input">
+
+                                <div className="single-input"> 
+                                    <label>Player ID</label>
+                                </div>
+
+                                <div className="single-input">
+                                    <input placeholder="player ID" value={playerID} onChange={handleChangeID} name="playerID"></input>
+                                </div>
+
+                                <div className="single-input">
+                                    <label>Bid Amount</label>
+                                </div>
+
+                                <div className="single-input"> 
+                                    <input placeholder="bid amount" value={bidAmount} onChange={handleChangeBid} name="bidAmount"></input>
+                                </div>
+
+                            </div>
+                            
+                            <input type="submit" value="Submit" />
+                        </form>
+                    </div>
+
+                    <div className="current-bids">
+                        <h2>Current Bids</h2>
                         
-                        <label>Bid Amount</label>
-                        <input type="number" value={bidAmount} onChange={handleChangeBid} name="bidAmount"></input>
-
-                        <input type="submit" value="Submit" />
-                    </form>
-
-                    <h2>Current Bids</h2>
-                    
-                    {(bidList.length === 0)?(<div>No bids to display</div>):(
-                        <div>
-                            <table className="bidTable">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Amount</th>
-                                        <th>Time</th>
-                                        <th>Player ID</th>
-                                        <th>Team ID</th>
-                                    
-                                    </tr>
-                                </thead>
-
-
-                                <tbody>
-                                    {bidList.map(indBid =>(
-                                        <tr key={indBid.id}>
-                                            <td>{indBid.id}</td>
-                                            <td>{indBid.amount}</td>
-                                            <td>{indBid.when}</td>
-                                            <td>{indBid.player_id}</td>
-                                            <td>{indBid.team_id}</td>
-                                            
+                        {(bidList.length === 0)?(<div>No bids to display</div>):(
+                            <div>
+                                <table className="bid-table">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Amount</th>
+                                            <th>Time</th>
+                                            <th>Player ID</th>
+                                            <th>Team ID</th>
+                                        
                                         </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        </div>
-                    )}
+                                    </thead>
 
 
-                    <h2>Players</h2>    
-                    <table className="app">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>First Name</th>
-                                <th>Middle Name</th>
-                                <th>Last Name</th>
-                                <th>Player Type</th>
-                                <th>Buy Out</th>
-                                <th>Start Price</th>
-                                <th>Auctioned</th>
-                                <th>Contract Period</th>
-                                <th>Team ID</th>
-                            </tr>
-                        </thead>
+                                    <tbody>
+                                        {bidList.map(indBid =>(
+                                            <tr key={indBid.id}>
+                                                <td>{indBid.id}</td>
+                                                <td>{indBid.amount}</td>
+                                                <td>{indBid.when}</td>
+                                                <td>{indBid.player_id}</td>
+                                                <td>{indBid.team_id}</td>
+                                                
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
+                        )}
 
 
-                        <tbody>
-                            {playerList.map(player =>(
-                                <tr key={player.id}>
-                                    <td>{player.id}</td>
-                                    <td>{player.firstname}</td>
-                                    <td>{player.middlename}</td>
-                                    <td>{player.lastname}</td>
-                                    <td>{player.player_type}</td>
-                                    <td>{player.buyout}</td>
-                                    <td>{player.start_price}</td>
-                                    <td>{player.autioned?"true":"false"}</td>
-                                    <td>{player.contract_period}</td>
-                                    <td>null</td>
-                                    {/* <td><input type="number" name="bid_amount" onChange={handleChange} value={bidAmount[player.id]}/></td>
-                                    <td><button onClick={()=>bid(player)}>Make a Bid</button></td> */}
-                                    
+                        <h2>Players</h2>    
+                        <table className="player-list">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>First Name</th>
+                                    <th>Middle Name</th>
+                                    <th>Last Name</th>
+                                    <th>Player Type</th>
+                                    <th>Buy Out</th>
+                                    <th>Start Price</th>
+                                    <th>Auctioned</th>
+                                    <th>Contract Period</th>
+                                    <th>Team ID</th>
                                 </tr>
-                            ))}
-                        </tbody>
-                                
-                    </table>
+                            </thead>
+
+
+                            <tbody>
+                                {playerList.map(player =>(
+                                    <tr key={player.id}>
+                                        <td>{player.id}</td>
+                                        <td>{player.firstname}</td>
+                                        <td>{player.middlename}</td>
+                                        <td>{player.lastname}</td>
+                                        <td>{player.player_type}</td>
+                                        <td>{player.buyout}</td>
+                                        <td>{player.start_price}</td>
+                                        <td>{player.autioned?"true":"false"}</td>
+                                        <td>{player.contract_period}</td>
+                                        <td>null</td>
+                                        {/* <td><input type="number" name="bid_amount" onChange={handleChange} value={bidAmount[player.id]}/></td>
+                                        <td><button onClick={()=>bid(player)}>Make a Bid</button></td> */}
+                                        
+                                    </tr>
+                                ))}
+                            </tbody>
+                                    
+                        </table>
+                    </div>
                 </div>)
             }
         </div>                   

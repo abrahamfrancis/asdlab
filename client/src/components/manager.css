@@ -1,0 +1,32 @@
+.manager-screen{
+    border: 10px;
+    padding: 5%;
+}
+
+.bid-input{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  
+}
+
+.single-input{
+    flex: 1;
+    padding: 10px;
+    height: 100px;
+    /* width: 100%; */
+}
+
+.player-details, .current-bids{
+    padding:20px;
+}
+
+.bid-table, .player-list, th, td{
+    padding:20px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid black;
+    border-collapse: collapse;
+}
+
+

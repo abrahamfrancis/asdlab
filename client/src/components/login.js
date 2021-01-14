@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import "./login.css"
 
 const Login = (props) => {
   return (
-    <div>
+    <div className="login-screen">
       <h1>Login</h1>
       <p><Link to='/admin'>View Admin Dashboard</Link></p>
       <p><Link to='/manager'>View Manager Dashboard</Link></p>

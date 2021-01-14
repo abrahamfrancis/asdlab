@@ -36,5 +36,6 @@ alembic upgrade head
 ### 4. Running the client website
 ```
 cd client
+npm install
 npm start
 ```

@@ -1,5 +1,5 @@
 import React,{useState, useEffect} from 'react';
-import "../css/admin.css";
+import "./admin.css";
 
 const Admin = (props) => {
     const [playerList, setPlayerList] = useState(null);
@@ -71,56 +71,116 @@ const Admin = (props) => {
     if(playerList !== null){
         return(
             <div className="admin-panel">
-                <div className="playerAddForm">
+                <h1>Admin Panel</h1>
+                
+                <div className="player-form">
                     <h2>Add Players</h2>
-
                     <form onSubmit={handleSubmit}>
                         {/* <label>ID</label>
                         <input type="number" name="id" onChange={handleChange} value={addPlayer.id}/> */}
+                        <div className="player-add-form">
+                            <div className="single-input"> 
+                                <label>First Name</label>
+                            </div>
 
-                        <label>First Name</label>
-                        <input type="text" name="firstname" onChange={handleChange} value={addPlayer.firstname}/>
+                            <div className="single-input">     
+                                <input type="text" name="firstname" onChange={handleChange} value={addPlayer.firstname}/>
+                            </div>
 
-                        <label>Middle Name</label>
-                        <input type="text" name="middlename" onChange={handleChange} value={addPlayer.middlename}/>
+                            <div className="single-input"> 
+                                <label>Middle Name</label>
+                            </div>
 
-                        <label>Last Name</label>
-                        <input type="text" name="lastname" onChange={handleChange} value={addPlayer.lastname}/>
+                            <div className="single-input"> 
+                                <input type="text" name="middlename" onChange={handleChange} value={addPlayer.middlename}/>
+                            </div>
 
-                        <label>Player Type</label>
-                        <input type="text" name="player_type" onChange={handleChange} value={addPlayer.player_type}/>
+                            <div className="single-input"> 
+                                <label>Last Name</label>
+                            </div>    
 
-                        <label>Buy Out</label>
-                        <input type="number" name="buyout" onChange={handleChange} value={addPlayer.buyout}/>
+                            <div className="single-input"> 
+                                <input type="text" name="lastname" onChange={handleChange} value={addPlayer.lastname}/>
+                            </div>
 
-                        <label>Start Price</label>
-                        <input type="number" name="start_price" onChange={handleChange} value={addPlayer.start_price}/>
+                            <div className="single-input"> 
+                                <label>Player Type</label>
+                            </div>
 
-                        <label>Auctioned</label>
-                        <input type="text" name="auctioned" onChange={handleChange} value={addPlayer.auctioned}/>
+                            <div className="single-input"> 
+                                <input type="text" name="player_type" onChange={handleChange} value={addPlayer.player_type}/>
+                            </div>
 
-                        <label>Contract Period</label>
-                        <input type="number" name="contract_period" onChange={handleChange} value={addPlayer.contract_period}/>
+                            <div className="single-input"> 
+                                <label>Buy Out</label>
+                            </div>
 
-                        <label>Team ID</label>
-                        <input type="number" name="team_id" onChange={handleChange} value={addPlayer.team_id} /> 
-                        
-                        <input type="submit" value="Submit" />
+                            <div className="single-input"> 
+                                <input type="number" name="buyout" onChange={handleChange} value={addPlayer.buyout}/>
+                            </div>
+
+                            <div className="single-input"> 
+                                <label>Start Price</label>
+                            </div>
+                            
+                            <div className="single-input"> 
+                                <input type="number" name="start_price" onChange={handleChange} value={addPlayer.start_price}/>
+                            </div>
+
+                            <div className="single-input"> 
+                                <label>Auctioned</label>
+                            </div>
+
+                            <div className="single-input"> 
+                                <input type="text" name="auctioned" onChange={handleChange} value={addPlayer.auctioned}/>
+                            </div>
+                            
+                            <div className="single-input"> 
+                                <label>Contract Period</label>
+                            </div>
+
+                            <div className="single-input"> 
+                                <input type="number" name="contract_period" onChange={handleChange} value={addPlayer.contract_period}/>
+                            </div>
+
+                            <div className="single-input"> 
+                                <label>Team ID</label>
+                            </div>
+
+                            <div className="single-input"> 
+                                <input type="number" name="team_id" onChange={handleChange} value={addPlayer.team_id} /> 
+                            </div>
+
+                            <div className="single-input"> 
+                                <input type="submit" value="Submit" />
+                            </div>
+                        </div>
                     </form>
                 </div>
+               
 
-                <div className="playerRemove">
+                <div className="player-remove">
                     <h2>Remove Players</h2>
                     <form onSubmit={removePlayerHandler}>
-                            <label>Player ID</label>
+                        <div className="remove-input">
+                            <div className="single-input"> 
+                                <label>Player ID</label>
+                            </div>
+                            
+                            <div className="single-input">     
                                 <input type="text" name="playerID" onChange={handleRemoveChange} value={removePlayer}/>
+                            </div>
+                            
+                            <div className="single-input"> 
                                 <input type="submit" value="Submit" />
+                            </div>
+                        </div>
                     </form> 
                 </div>
 
-                <div className="playerDetails">
+                <div className="player-details">
                     <h2>Players</h2>    
-                    <table className="app">
+                    <table className="player-list">
                         <thead>
                             <tr>
                                 <th>ID</th>
