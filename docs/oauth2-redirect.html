@@ -19,7 +19,6 @@
         } else {
             qp = location.search.substring(1);
         }
-
         arr = qp.split("&")
         arr.forEach(function (v,i,_arr) { _arr[i] = '"' + v.replace('=', '":"') + '"';})
         qp = qp ? JSON.parse('{' + arr.join() + '}',
