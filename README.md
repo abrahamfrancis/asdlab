@@ -6,7 +6,7 @@ A simple player auction system for prototypihng an auction management applicatio
 ---
 SQL Tables are created and altered (if necessary) using python with [SQLAlchemy](https://github.com/sqlalchemy/sqlalchemy) and [Alembic](https://github.com/sqlalchemy/alembic) on a PostgreSql instance
 
-The REST api is generated in compiled Haskell (with Warp HTTP server) automatically using [PostgREST](https://github.com/PostgREST/postgrest)
+The REST api is generated using Python & [PostgREST](https://github.com/PostgREST/postgrest)
 
 ## How to run
 ----
